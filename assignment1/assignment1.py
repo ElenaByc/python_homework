@@ -40,6 +40,7 @@ def calc(operand1, operand2, operator="multiply"):
         return f"You can't {operator} those values!"
 
 
+print()
 print("10 + 2 = ", calc(10, 2, "add"))
 print("10 - 2 = ", calc(2, 10, "subtract"))
 print("10 * 2 = ", calc(10, 2, "multiply"))
@@ -62,7 +63,7 @@ print("'10' + '2' = ", calc("10", "2", "add"))
 def data_type_conversion(value, data_type):
     try:
         match data_type:
-            case "ßfloat":
+            case "float":
                 return float(value)
             case "str":
                 return str(value)
@@ -74,9 +75,47 @@ def data_type_conversion(value, data_type):
         return f"You can't convert {value} into a {data_type}."
 
 
+print()
 print("'00012' converted to int = ", data_type_conversion("00012", "int"))
 print("'5.5000' converted to float = ", data_type_conversion("5.5", "float"))
 print("17 converted to float = ", data_type_conversion(17, "float"))
 print("36.6 converted to int = ", data_type_conversion(36.6, "int"))
 print("'36.6' converted to int = ", data_type_conversion("36.6", "int"))
 print("'36.6' converted to float = ", data_type_conversion("36.6", "float"))
+
+
+# Task 5: Grading System, Using *args
+
+
+def grade(*args):
+    for arg in args:
+        if not isinstance(arg, (int, float)):
+            return "Invalid data was provided."
+        if arg < 0 or arg > 100:
+            return "Invalid data was provided."
+    try:
+        average = sum(args) / len(args)
+        if average >= 90:
+            return "A"
+        elif average >= 80:
+            return "B"
+        elif average >= 70:
+            return "C"
+        elif average >= 60:
+            return "D"
+        else:
+            return "F"
+    except (TypeError, ZeroDivisionError):
+        return "Invalid data was provided."
+
+
+print()
+print("Grade for 75, 80, 85 = ", grade(75, 85, 95))
+print(
+    "Grade for 'seventy five', 'eighty', 'eighty five' = ",
+    grade("seventy five", "eighty", "eighty five"),
+)
+print("Grade for 74.5, 80, 85 = ", grade(74.5, 80, 85))
+print("Grade for -34, 90, 100 = ", grade(-34, 90, 100))
+print("Grade for 110, 90, 100 = ", grade(101, 90, 100))
+
