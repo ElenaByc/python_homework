@@ -1,20 +1,14 @@
 # Task 1: Hello
-
-
 def hello():
     return "Hello!"
 
 
 # Task 2: Greet with a Formatted String
-
-
 def greet(name):
     return f"Hello, {name}!"
 
 
 # Task 3: Calculator
-
-
 def calc(operand1, operand2, operator="multiply"):
     try:
         match operator:
@@ -58,8 +52,6 @@ print("'10' + '2' = ", calc("10", "2", "add"))
 
 
 # Task 4: Data Type Conversion
-
-
 def data_type_conversion(value, data_type):
     try:
         match data_type:
@@ -85,8 +77,6 @@ print("'36.6' converted to float = ", data_type_conversion("36.6", "float"))
 
 
 # Task 5: Grading System, Using *args
-
-
 def grade(*args):
     for arg in args:
         if not isinstance(arg, (int, float)):
@@ -135,9 +125,42 @@ def repeat(string, times):
     return result
 
 
+print()
 print("Repeat 'Ha' 3 times = ", repeat("Ha", 3))
 print("Repeat 'Ha' 0 times = ", repeat("Ha", 0))
 print("Repeat 'Ha' -1 times = ", repeat("Ha", -1))
 print("Repeat 'Ha' 1.5 times = ", repeat("Ha", 1.5))
 print("Repeat 'Ha' 'three' times = ", repeat("Ha", "three"))
 print("Repeat 'Ha' [1, 2, 3] times = ", repeat("Ha", [1, 2, 3]))
+
+
+# Task 7: Student Scores, Using **kwargs
+def student_scores(operation, **kwargs):
+    match operation:
+        case "mean":
+            try:
+                return sum(kwargs.values()) / len(kwargs)
+            except (TypeError, ZeroDivisionError):
+                return "Invalid data was provided."
+        case "best":
+            best_student = None
+            best_score = 0
+            for name, score in kwargs.items():
+                if not isinstance(score, (int, float)):
+                    return "Invalid data was provided."
+                if score < 0 or score > 100:
+                    return "Invalid data was provided."
+                if score > best_score:
+                    best_score = score
+                    best_student = name
+            return best_student
+        case _:
+            return f"Invalid operation: {operation}"
+
+
+print()
+student_score_dictionary = {"Anna": 89, "Andrew": 78, "Angela": 67}
+print(student_score_dictionary)
+print("Mean score = ", student_scores("mean", **student_score_dictionary))
+print("Best score = ", student_scores("best", **student_score_dictionary))
+print("Invalid operation = ", student_scores("invalid", **student_score_dictionary))
