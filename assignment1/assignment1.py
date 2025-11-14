@@ -54,3 +54,29 @@ print("10 ** 0 = ", calc(10, 0, "power"))
 print("'10' * 2 = ", calc("10", 2, "multiply"))
 print("'10' * '2' = ", calc("10", "2", "multiply"))
 print("'10' + '2' = ", calc("10", "2", "add"))
+
+
+# Task 4: Data Type Conversion
+
+
+def data_type_conversion(value, data_type):
+    try:
+        match data_type:
+            case "ßfloat":
+                return float(value)
+            case "str":
+                return str(value)
+            case "int":
+                return int(value)
+            case _:
+                return f"Invalid data type: {data_type}"
+    except ValueError:
+        return f"You can't convert {value} into a {data_type}."
+
+
+print("'00012' converted to int = ", data_type_conversion("00012", "int"))
+print("'5.5000' converted to float = ", data_type_conversion("5.5", "float"))
+print("17 converted to float = ", data_type_conversion(17, "float"))
+print("36.6 converted to int = ", data_type_conversion(36.6, "int"))
+print("'36.6' converted to int = ", data_type_conversion("36.6", "int"))
+print("'36.6' converted to float = ", data_type_conversion("36.6", "float"))
