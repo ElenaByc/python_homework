@@ -144,7 +144,7 @@ def student_scores(operation, **kwargs):
                 return "Invalid data was provided."
         case "best":
             best_student = None
-            best_score = 0
+            best_score = -1
             for name, score in kwargs.items():
                 if not isinstance(score, (int, float)):
                     return "Invalid data was provided."
@@ -164,3 +164,41 @@ print(student_score_dictionary)
 print("Mean score = ", student_scores("mean", **student_score_dictionary))
 print("Best score = ", student_scores("best", **student_score_dictionary))
 print("Invalid operation = ", student_scores("invalid", **student_score_dictionary))
+
+student_score_dictionary = {"Anna": 0, "Andrew": 0, "Angela": 0}
+print(student_score_dictionary)
+print("Mean score = ", student_scores("mean", **student_score_dictionary))
+print("Best score = ", student_scores("best", **student_score_dictionary))
+
+
+# Task 8: Titleize, with String and List Operations
+def titleize(text):
+    little_words = ["a", "on", "an", "the", "of", "and", "is", "in"]
+    words = text.split()
+    result = []
+
+    for i, word in enumerate(words):
+        # First word is always capitalized
+        if i == 0:
+            result.append(word.capitalize())
+        # Last word is always capitalized
+        elif i == len(words) - 1:
+            result.append(word.capitalize())
+        # Middle words: capitalize unless it's a little word
+        elif word.lower() in little_words:
+            result.append(word.lower())
+        else:
+            result.append(word.capitalize())
+
+    return " ".join(result)
+
+
+print()
+print("Titleize 'learNing python Is fun' = ", titleize("learNing python Is fun"))
+print("Titleize '' = ", titleize(""))
+print("Titleize 'one' = ", titleize("one"))
+print("Titleize 'one two' = ", titleize("one two"))
+print("Titleize 'one two three' = ", titleize("one two three"))
+little_words = ["a", "on", "an", "the", "of", "and", "is", "in"]
+little_words_string = " ".join(little_words)
+print(f"Titleize {little_words_string} = ", titleize(little_words_string))
