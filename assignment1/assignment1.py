@@ -119,3 +119,25 @@ print("Grade for 74.5, 80, 85 = ", grade(74.5, 80, 85))
 print("Grade for -34, 90, 100 = ", grade(-34, 90, 100))
 print("Grade for 110, 90, 100 = ", grade(101, 90, 100))
 
+
+# Task 6: Use a For Loop with a Range
+def repeat(string, times):
+    if not isinstance(times, int):
+        return "Invalid data was provided."
+    if times < 0:
+        return "Invalid data was provided."
+    if not isinstance(string, str):
+        return "Invalid data was provided."
+
+    result = ""
+    for i in range(times):
+        result += string
+    return result
+
+
+print("Repeat 'Ha' 3 times = ", repeat("Ha", 3))
+print("Repeat 'Ha' 0 times = ", repeat("Ha", 0))
+print("Repeat 'Ha' -1 times = ", repeat("Ha", -1))
+print("Repeat 'Ha' 1.5 times = ", repeat("Ha", 1.5))
+print("Repeat 'Ha' 'three' times = ", repeat("Ha", "three"))
+print("Repeat 'Ha' [1, 2, 3] times = ", repeat("Ha", [1, 2, 3]))
