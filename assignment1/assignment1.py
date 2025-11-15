@@ -224,3 +224,32 @@ print(
     "Hangman 'apricot' 'abcdefghijklmnopqrstuvwxyz' = ",
     hangman("apricot", "abcdefghijklmnopqrstuvwxyz"),
 )
+
+
+# Task 10: Pig Latin, Another String Manipulation Exercise
+def pig_latin(text):
+    vowels = "aeiou"
+
+    def convert_word(word):
+        if word[0] in vowels:
+            return word + "ay"
+
+        i = 0
+        while i < len(word) and word[i] not in vowels:
+            # Handle "qu" together
+            if i + 1 < len(word) and word[i] == "q" and word[i + 1] == "u":
+                i += 2
+                break
+            i += 1
+
+        return word[i:] + word[:i] + "ay"
+
+    words = text.split()
+    return " ".join(convert_word(w) for w in words)
+
+
+print()
+print("Pig Latin 'pig' = ", pig_latin("pig"))
+print("Pig Latin 'red fox' = ", pig_latin("red fox"))
+print("Pig Latin 'cute little kitty' = ", pig_latin("cute little kitty"))
+print("Pig Latin 'quiet little kitty' = ", pig_latin("quiet little kitty"))
