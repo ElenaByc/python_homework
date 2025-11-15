@@ -202,3 +202,25 @@ print("Titleize 'one two three' = ", titleize("one two three"))
 little_words = ["a", "on", "an", "the", "of", "and", "is", "in"]
 little_words_string = " ".join(little_words)
 print(f"Titleize {little_words_string} = ", titleize(little_words_string))
+
+
+# Task 9: Hangman, with more String Operations
+def hangman(secret, guess):
+    result = ""
+    for char in secret:
+        if char in guess:
+            result += char
+        else:
+            result += "_"
+    return result
+
+
+print()
+print("Hangman 'apple' 'al' = ", hangman("apple", "al"))
+print("Hangman 'banana' 'a' = ", hangman("banana", "a"))
+print("Hangman 'pomegranate' 'apple' = ", hangman("pomegranate", "apple"))
+print("Hangman 'apricot' 'defgh' = ", hangman("apricot", "defgh"))
+print(
+    "Hangman 'apricot' 'abcdefghijklmnopqrstuvwxyz' = ",
+    hangman("apricot", "abcdefghijklmnopqrstuvwxyz"),
+)
