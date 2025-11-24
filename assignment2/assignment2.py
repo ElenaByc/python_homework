@@ -2,6 +2,7 @@
 import csv
 import os
 import traceback
+from pprint import pprint
 
 
 def read_employees():
@@ -45,7 +46,8 @@ def read_employees():
 
 
 employees = read_employees()
-print(employees)
+print("Employees:")
+pprint(employees)
 
 
 # Task 3: Find the Column Index
@@ -81,3 +83,14 @@ def employee_find_2(employee_id):
         )
     )
     return matches
+
+# Task 7: Sort the Rows by last_name Using a Lambda
+def sort_by_last_name():
+    last_name_index = column_index("last_name")
+    employees["rows"].sort(key=lambda row: row[last_name_index])
+    return employees["rows"]
+
+# Call the function in your program, and then print out the employees dict, to see it in sorted form.
+sort_by_last_name()
+print("Employees sorted by last name:")
+pprint(employees)
