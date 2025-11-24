@@ -54,3 +54,11 @@ def column_index(column_name):
 
 
 employee_id_column = column_index("employee_id")
+
+
+# Task 4: Find the Employee First Name
+def first_name(row_number):
+    first_name_index = column_index("first_name")
+    row = employees["rows"][row_number]
+    return row[first_name_index]
+
