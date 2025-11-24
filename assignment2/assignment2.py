@@ -1,10 +1,10 @@
-# Task 2: Read a CSV File
 import csv
 import os
 import traceback
 from pprint import pprint
 
 
+# Task 2: Read a CSV File
 def read_employees():
     # dictionary to store the CSV structure
     result_dict = {}
@@ -100,11 +100,6 @@ pprint(employees)
 # Task 8: Create a dict for an Employee
 
 # without using zip()
-
-
-# Task 8: Create a dict for an Employee
-
-# with using zip()
 # def employee_dict(row):
 #     result_dict = {}
 #
@@ -126,3 +121,20 @@ def employee_dict(row):
             result_dict[field] = value
 
     return result_dict
+
+
+# Task 9: A dict of dicts, for All Employees
+def all_employees_dict():
+    result_dict = {}
+
+    for row in employees["rows"]:
+        employee_id = row[employee_id_column]
+        employee_info = employee_dict(row)
+        result_dict[employee_id] = employee_info
+
+    return result_dict
+
+
+all_employees = all_employees_dict()
+print("All employees dictionary:")
+pprint(all_employees)
