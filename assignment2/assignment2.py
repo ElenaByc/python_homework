@@ -84,13 +84,45 @@ def employee_find_2(employee_id):
     )
     return matches
 
+
 # Task 7: Sort the Rows by last_name Using a Lambda
 def sort_by_last_name():
     last_name_index = column_index("last_name")
     employees["rows"].sort(key=lambda row: row[last_name_index])
     return employees["rows"]
 
-# Call the function in your program, and then print out the employees dict, to see it in sorted form.
+
 sort_by_last_name()
 print("Employees sorted by last name:")
 pprint(employees)
+
+
+# Task 8: Create a dict for an Employee
+
+# without using zip()
+
+
+# Task 8: Create a dict for an Employee
+
+# with using zip()
+# def employee_dict(row):
+#     result_dict = {}
+#
+#     for i in range(len(employees["fields"])):
+#         field = employees["fields"][i]
+#         value = row[i]
+#         if field != "employee_id":
+#             result_dict[field] = value
+#
+#     return result_dict
+
+
+# using zip() - pairs up each field name with its corresponding value in the row
+def employee_dict(row):
+    result_dict = {}
+
+    for field, value in zip(employees["fields"], row):
+        if field != "employee_id":
+            result_dict[field] = value
+
+    return result_dict
