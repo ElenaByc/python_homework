@@ -138,3 +138,12 @@ def all_employees_dict():
 all_employees = all_employees_dict()
 print("All employees dictionary:")
 pprint(all_employees)
+
+
+# Task 10: Use the os Module
+def get_this_value():
+    return os.getenv("THISVALUE")
+
+
+this_value = get_this_value()
+print("THISVALUE environment variable:", this_value)
