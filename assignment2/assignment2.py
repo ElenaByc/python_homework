@@ -1,6 +1,7 @@
 import csv
 import os
 import traceback
+import custom_module
 from pprint import pprint
 
 
@@ -147,3 +148,13 @@ def get_this_value():
 
 this_value = get_this_value()
 print("THISVALUE environment variable:", this_value)
+
+
+# Task 11: Creating Your Own Module
+def set_that_secret(new_secret):
+    custom_module.set_secret(new_secret)
+
+
+print("custom_module.secret before setting:", custom_module.secret)
+set_that_secret("suoersupersecret")
+print("custom_module.secret after setting:", custom_module.secret)
