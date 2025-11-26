@@ -209,3 +209,16 @@ print("Minutes1:")
 pprint(minutes1)
 print("Minutes2:")
 pprint(minutes2)
+print(f"Minutes 1 and munites 2 total length: {len(minutes1['rows'])} + {len(minutes2['rows'])} = {len(minutes1['rows']) + len(minutes2['rows'])}")
+
+
+# Task 13: Create minutes_set
+def create_minutes_set():
+    set1 = set(minutes1["rows"])
+    set2 = set(minutes2["rows"])
+    return set1 | set2
+
+
+minutes_set = create_minutes_set()
+print(f"Minutes set (set length is {len(minutes_set)}):")
+pprint(minutes_set)
