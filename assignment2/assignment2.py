@@ -3,6 +3,7 @@ import os
 import traceback
 import custom_module
 from pprint import pprint
+from datetime import datetime
 
 
 # Task 2: Read a CSV File
@@ -209,7 +210,9 @@ print("Minutes1:")
 pprint(minutes1)
 print("Minutes2:")
 pprint(minutes2)
-print(f"Minutes 1 and munites 2 total length: {len(minutes1['rows'])} + {len(minutes2['rows'])} = {len(minutes1['rows']) + len(minutes2['rows'])}")
+print(
+    f"Minutes 1 and munites 2 total length: {len(minutes1['rows'])} + {len(minutes2['rows'])} = {len(minutes1['rows']) + len(minutes2['rows'])}"
+)
 
 
 # Task 13: Create minutes_set
@@ -222,3 +225,17 @@ def create_minutes_set():
 minutes_set = create_minutes_set()
 print(f"Minutes set (set length is {len(minutes_set)}):")
 pprint(minutes_set)
+
+
+# Task 14: Convert to datetime
+def create_minutes_list():
+    minutes_list = list(minutes_set)
+    result = list(
+        map(lambda x: (x[0], datetime.strptime(x[1], "%B %d, %Y")), minutes_list)
+    )
+    return result
+
+
+minutes_list = create_minutes_list()
+print("Minutes list:")
+pprint(minutes_list)
