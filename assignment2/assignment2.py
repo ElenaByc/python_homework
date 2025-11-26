@@ -156,5 +156,56 @@ def set_that_secret(new_secret):
 
 
 print("custom_module.secret before setting:", custom_module.secret)
-set_that_secret("suoersupersecret")
+set_that_secret("supersupersecret")
 print("custom_module.secret after setting:", custom_module.secret)
+
+
+# Task 12: Read minutes1.csv and minutes2.csv
+
+
+# Helper function to read a CSV file into a dictionary
+# similar to read_employees() function
+def read_csv_file(file_name):
+    result_dict = {}
+    data_rows = []
+
+    try:
+        csv_path = os.path.join(os.path.dirname(__file__), "..", "csv", file_name)
+        with open(csv_path, "r") as file:
+            reader = csv.reader(file)
+            for row in reader:
+                if "fields" not in result_dict:
+                    result_dict["fields"] = row
+                else:
+                    data_rows.append(tuple(row))
+
+        result_dict["rows"] = data_rows
+        return result_dict
+
+    except Exception as e:
+        print(f"Error happened while reading {file_name}")
+        trace_back = traceback.extract_tb(e.__traceback__)
+        stack_trace = []
+        for trace in trace_back:
+            stack_trace.append(
+                f"File : {trace[0]} , Line : {trace[1]}, Func.Name : {trace[2]}, Message : {trace[3]}"
+            )
+        print(f"Exception type: {type(e).__name__}")
+        message = str(e)
+        if message:
+            print(f"Exception message: {message}")
+        print(f"Stack trace: {stack_trace}")
+        exit(1)
+
+
+def read_minutes():
+    minutes1 = read_csv_file("minutes1.csv")
+    minutes2 = read_csv_file("minutes2.csv")
+    return minutes1, minutes2
+
+
+minutes1, minutes2 = read_minutes()
+print("Minutes1:")
+pprint(minutes1)
+print("Minutes2:")
+pprint(minutes2)
