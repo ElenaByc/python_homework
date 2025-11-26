@@ -239,3 +239,40 @@ def create_minutes_list():
 minutes_list = create_minutes_list()
 print("Minutes list:")
 pprint(minutes_list)
+
+
+# Task 15: Write Out Sorted List
+def write_sorted_list():
+    sorted_minutes = sorted(minutes_list, key=lambda item: item[1])
+    formatted_rows = list(
+        map(lambda x: (x[0], datetime.strftime(x[1], "%B %d, %Y")), sorted_minutes)
+    )
+
+    try:
+        csv_path = os.path.join(os.path.dirname(__file__), "minutes.csv")
+        with open(csv_path, "w", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerow(minutes1["fields"])
+            writer.writerows(formatted_rows)
+    except Exception as e:
+        print("An error occurred while writing minutes.csv")
+        trace_back = traceback.extract_tb(e.__traceback__)
+        stack_trace = []
+        for trace in trace_back:
+            stack_trace.append(
+                f"File : {trace[0]} , Line : {trace[1]}, Func.Name : {trace[2]}, Message : {trace[3]}"
+            )
+        print(f"Exception type: {type(e).__name__}")
+        message = str(e)
+        if message:
+            print(f"Exception message: {message}")
+        print(f"Stack trace: {stack_trace}")
+        exit(1)
+
+    return formatted_rows
+
+
+formatted_list = write_sorted_list()
+print("minutes.csv has been written")
+print("Formatted list:")
+pprint(formatted_list)
