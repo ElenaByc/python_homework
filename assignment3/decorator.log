@@ -1,0 +1,12 @@
+function: function_no_params
+positional parameters: none
+keyword parameters: none
+return: None
+function: function_positional_args
+positional parameters: [1, 2, 3, 'test']
+keyword parameters: none
+return: True
+function: function_keyword_args
+positional parameters: none
+keyword parameters: {'name': 'Alice', 'age': 30, 'city': 'New York'}
+return: <function logger_decorator at 0x103ce2fb0>
