@@ -6,7 +6,7 @@ try:
     diary_path = os.path.join(os.path.dirname(__file__), "diary.txt")
     with open(diary_path, "a") as diary_file:
         # The first prompt should say, "What happened today?"
-        prompt = "What happened today?\n"
+        prompt = "What happened today? "
         while True:
             user_input = input(prompt)
             diary_file.write(user_input + "\n")
@@ -15,7 +15,7 @@ try:
             if user_input.strip().lower() == "done for now":
                 break
             # All subsequent prompts should say "What else?"  
-            prompt = "What else?\n"
+            prompt = "What else? "
 except Exception as e:
     trace_back = traceback.extract_tb(e.__traceback__)
     stack_trace = []
