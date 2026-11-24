@@ -1,4 +1,5 @@
 import pandas as pd
+import json
 
 # Task 1
 print("--------------------------------")
@@ -52,4 +53,22 @@ task2_employees = pd.read_csv('employees.csv')
 
 print("DataFrame read from employees.csv")
 print(task2_employees)
+print()
+
+# 2.2 Read data from a JSON file
+additional_employees = [
+    {'Name': 'Eve', 'Age': 28, 'City': 'Miami', 'Salary': 60000},
+    {'Name': 'Frank', 'Age': 40, 'City': 'Seattle', 'Salary': 95000}
+]
+
+with open('additional_employees.json', 'w') as file:
+    json.dump(additional_employees, file, indent=4)
+
+print("JSON file created with additional employees")
+print()
+
+json_employees = pd.read_json('additional_employees.json')
+
+print("DataFrame read from additional_employees.json")
+print(json_employees)
 print()
