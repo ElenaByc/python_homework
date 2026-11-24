@@ -95,3 +95,11 @@ first_three = more_employees.head(3)
 print("First three employees")
 print(first_three)
 print()
+
+# 3.2 Get the last two rows
+last_two = more_employees.tail(2)
+
+print("Last two employees")
+print(last_two)
+print()
+
