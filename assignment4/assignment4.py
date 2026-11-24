@@ -114,3 +114,21 @@ print()
 print("Information about the DataFrame")
 print(more_employees.info())
 print()
+
+# Task 4
+print("--------------------------------")
+print("Task 4")
+print("--------------------------------")
+print()
+
+# 4.1 Read dirty data and create a copy
+dirty_data = pd.read_csv('dirty_data.csv')
+clean_data = dirty_data.copy()
+
+print("Original dirty data")
+print(dirty_data)
+print()
+
+print("Copy of dirty data")
+print(clean_data)
+print()
