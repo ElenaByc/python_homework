@@ -192,3 +192,18 @@ clean_data = clean_data.assign(
 print("Data after filling missing values")
 print(clean_data)
 print()
+
+# 4.6 Convert Hire Date to datetime
+clean_data = clean_data.assign(
+    **{
+        'Hire Date': pd.to_datetime(
+            clean_data['Hire Date'],
+            format='mixed'
+        )
+    }
+)
+
+print("Hire Date converted to datetime")
+print(clean_data['Hire Date'])
+print(clean_data['Hire Date'].dtype)
+print()
