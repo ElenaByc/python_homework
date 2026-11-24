@@ -72,3 +72,13 @@ json_employees = pd.read_json('additional_employees.json')
 print("DataFrame read from additional_employees.json")
 print(json_employees)
 print()
+
+# 2.3 Combine DataFrames
+more_employees = pd.concat(
+    [task2_employees, json_employees],
+    ignore_index=True
+)
+
+print("Combined DataFrame")
+print(more_employees)
+print()
