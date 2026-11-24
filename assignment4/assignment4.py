@@ -207,3 +207,13 @@ print("Hire Date converted to datetime")
 print(clean_data['Hire Date'])
 print(clean_data['Hire Date'].dtype)
 print()
+
+# 4.7 Strip whitespace and standardize Name and Department
+clean_data = clean_data.assign(
+    Name=clean_data['Name'].str.strip().str.upper(),
+    Department=clean_data['Department'].str.strip().str.upper()
+)
+
+print("Name and Department standardized")
+print(clean_data[['Name', 'Department']])
+print()
