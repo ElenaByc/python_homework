@@ -150,3 +150,14 @@ print("Age converted to numeric")
 print(clean_data['Age'])
 print(clean_data['Age'].dtype)
 print()
+
+# 4.4 Convert Salary to numeric
+clean_data['Salary'] = pd.to_numeric(
+    clean_data['Salary'],
+    errors='coerce'
+)
+
+print("Salary converted to numeric")
+print(clean_data['Salary'])
+print(clean_data['Salary'].dtype)
+print()
