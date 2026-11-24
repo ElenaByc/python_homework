@@ -22,12 +22,17 @@ print("DataFrame with Salary column added")
 print(task1_with_salary)
 print()
 
-
-# 1.3 Create a copy and increment Age by 1:
+# 1.3 Create a copy and increment Age by 1
 task1_older = task1_with_salary.copy()
 #task1_older['Age'] = task1_older['Age'] + 1      -  gives a warning
 task1_older.loc[:, 'Age'] = task1_older['Age'] + 1
 
 print("DataFrame with Age increased by 1")
 print(task1_older)
+print()
+
+# 1.4 Save the DataFrame to a CSV file
+task1_older.to_csv('employees.csv', index=False)
+
+print("DataFrame saved to employees.csv")
 print()
