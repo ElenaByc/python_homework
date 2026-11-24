@@ -167,7 +167,10 @@ print()
 # ) - gives a warning
 
 clean_data = clean_data.assign(
-    Salary=pd.to_numeric(clean_data['Salary'], errors='coerce')
+    Salary=pd.to_numeric(
+        clean_data['Salary'].replace(['unknown', 'n/a'], float('nan')),
+        errors='coerce'
+    )
 )
 
 print("Salary converted to numeric")
