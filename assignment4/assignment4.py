@@ -103,3 +103,10 @@ print("Last two employees")
 print(last_two)
 print()
 
+# 3.3 Get the shape of the DataFrame
+employee_shape = more_employees.shape
+
+print("Shape of the DataFrame")
+print(employee_shape)
+print()
+
