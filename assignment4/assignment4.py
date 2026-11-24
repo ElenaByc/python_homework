@@ -132,3 +132,21 @@ print()
 print("Copy of dirty data")
 print(clean_data)
 print()
+
+# 4.2 Remove duplicate rows
+clean_data = clean_data.drop_duplicates()
+
+print("Data after removing duplicates")
+print(clean_data)
+print()
+
+# 4.3 Convert Age to numeric
+clean_data['Age'] = pd.to_numeric(
+    clean_data['Age'],
+    errors='coerce'
+)
+
+print("Age converted to numeric")
+print(clean_data['Age'])
+print(clean_data['Age'].dtype)
+print()
