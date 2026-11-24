@@ -141,9 +141,18 @@ print(clean_data)
 print()
 
 # 4.3 Convert Age to numeric
-clean_data['Age'] = pd.to_numeric(
-    clean_data['Age'],
-    errors='coerce'
+# clean_data['Age'] = pd.to_numeric(
+#     clean_data['Age'],
+#     errors='coerce'
+# )  -  gives a warning
+
+# clean_data.loc[:, 'Age'] = pd.to_numeric(
+#     clean_data['Age'],
+#     errors='coerce'
+# )  - test failed
+
+clean_data = clean_data.assign(
+    Age=pd.to_numeric(clean_data['Age'], errors='coerce')
 )
 
 print("Age converted to numeric")
@@ -151,13 +160,35 @@ print(clean_data['Age'])
 print(clean_data['Age'].dtype)
 print()
 
-# 4.4 Convert Salary to numeric
-clean_data['Salary'] = pd.to_numeric(
-    clean_data['Salary'],
-    errors='coerce'
+# # 4.4 Convert Salary to numeric
+# clean_data['Salary'] = pd.to_numeric(
+#     clean_data['Salary'],
+#     errors='coerce'
+# ) - gives a warning
+
+clean_data = clean_data.assign(
+    Salary=pd.to_numeric(clean_data['Salary'], errors='coerce')
 )
 
 print("Salary converted to numeric")
 print(clean_data['Salary'])
 print(clean_data['Salary'].dtype)
+print()
+
+# # 4.5 Fill missing values
+# clean_data['Age'] = clean_data['Age'].fillna(
+#     clean_data['Age'].mean()
+# ) - gives a warning
+
+# clean_data['Salary'] = clean_data['Salary'].fillna(
+#     clean_data['Salary'].median()
+# ) - gives a warning
+
+clean_data = clean_data.assign(
+    Age=clean_data['Age'].fillna(clean_data['Age'].mean()),
+    Salary=clean_data['Salary'].fillna(clean_data['Salary'].median())
+)
+
+print("Data after filling missing values")
+print(clean_data)
 print()
