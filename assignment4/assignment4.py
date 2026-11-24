@@ -110,3 +110,7 @@ print("Shape of the DataFrame")
 print(employee_shape)
 print()
 
+# 3.4 Display information about the DataFrame
+print("Information about the DataFrame")
+print(more_employees.info())
+print()
