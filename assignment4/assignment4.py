@@ -82,3 +82,16 @@ more_employees = pd.concat(
 print("Combined DataFrame")
 print(more_employees)
 print()
+
+# Task 3
+print("--------------------------------")
+print("Task 3")
+print("--------------------------------")
+print()
+
+# 3.1 Get the first three rows
+first_three = more_employees.head(3)
+
+print("First three employees")
+print(first_three)
+print()
